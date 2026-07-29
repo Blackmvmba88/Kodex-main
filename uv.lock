@@ -84,6 +84,7 @@ name = "blackmamba-kodex"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "httpx" },
     { name = "openai" },
     { name = "pydantic" },
     { name = "rich" },
@@ -101,6 +102,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "httpx", specifier = ">=0.27.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.8.0" },
     { name = "openai", specifier = ">=1.12.0" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.6.0" },
