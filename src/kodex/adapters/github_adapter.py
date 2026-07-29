@@ -26,8 +26,12 @@ class GitHubAdapter(BaseAdapter):
         # TODO: Implementar la llamada a la GitHub API o CLI (gh)
         print(f"[GitHubAdapter] Interactuando con GitHub para: {task}")
         
+        git_state = str(context.get("git_state", ""))
+        preview = git_state[:100].replace('\n', ' ') if git_state else "Sin cambios."
+        print(f"[GitHubAdapter] Estado actual de git para el PR: {preview}...")
+        
         return {
             "status": "success",
-            "output": {"message": "Simulación: PR creado exitosamente."},
+            "output": {"message": "Simulación: PR creado exitosamente evaluando el estado actual."},
             "artifacts": []
         }

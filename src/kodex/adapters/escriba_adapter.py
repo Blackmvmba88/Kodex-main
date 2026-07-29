@@ -26,8 +26,13 @@ class EscribaAdapter(BaseAdapter):
         # TODO: Implementar la llamada a ESCRIBA
         print(f"[EscribaAdapter] Generando documentación para: {task}")
         
+        project_map = context.get("project_map", "")
+        git_state = context.get("git_state", "")
+        
+        print(f"[EscribaAdapter] Recibido contexto: Mapa ({len(str(project_map))} chars), Git ({len(str(git_state))} chars)")
+        
         return {
             "status": "success",
-            "output": {"message": "Simulación: ESCRIBA generó los documentos."},
+            "output": {"message": f"Simulación: ESCRIBA generó los documentos analizando {len(str(project_map))} caracteres de código."},
             "artifacts": ["docs/"]
         }

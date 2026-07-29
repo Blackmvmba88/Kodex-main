@@ -80,11 +80,19 @@ class XarvisAdapter(BaseAdapter):
             ) from exc
 
         # 2. Delegar la tarea al chat cuántico
-        print("[XarvisAdapter] 🔗 Conectado a XarvisCore. Delegando tarea...")
+        print("[XarvisAdapter] 🔗 Conectado a XarvisCore. Delegando tarea con contexto completo...")
         prompt_parts = []
         project_path = context.get("path")
+        project_map = context.get("project_map")
+        git_state = context.get("git_state")
+        
         if project_path:
             prompt_parts.append(f"CONTEXTO PROYECTO: {project_path}")
+        if project_map:
+            prompt_parts.append(f"MAPA DEL REPOSITORIO:\n{project_map}")
+        if git_state:
+            prompt_parts.append(f"ESTADO DE GIT:\n{git_state}")
+            
         prompt_parts.append(f"TAREA SOLICITADA POR KODEX: {task}")
 
         payload = {
